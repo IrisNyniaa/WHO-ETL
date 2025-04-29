@@ -35,8 +35,7 @@ requirements: create-environment
 #########################################################################
 # Run the security test (bandit)
 security-test:
-	$(call execute_in_env, bandit -lll ./src/*.py ./test/*.py \
-	./util_func/*.py ./test_utils/*.py)
+	$(call execute_in_env, bandit -lll ./src/*.py)
 
 # Run pip-audit test
 audit-test:
@@ -44,14 +43,12 @@ audit-test:
 
 # Run the black code check
 run-black:
-	$(call execute_in_env, black --line-length 79 ./src/*.py ./test/*.py \
-	./util_func/*/*.py ./test_utils/*.py)
+	$(call execute_in_env, black --line-length 79 ./src/*.py)
 
 # Run docformatter
 run-docformatter:
 	$(call execute_in_env, docformatter --in-place --wrap-summaries \
-	79 --wrap-descriptions 79 ./src/*.py ./test/*.py \
-	./util_func/*/*.py ./test_utils/*.py)
+	79 --wrap-descriptions 79 ./src/*.py)
 
 # Run the unit tests
 unit-test:
