@@ -1,0 +1,13 @@
+pytest==8.3.4
+boto3==1.37.0
+moto==5.1.0
+black==25.1.0
+bandit==1.8.3
+coverage==7.6.12
+pip-audit==2.8.0
+docformatter==1.7.5
+pytest-cov==6.0.0
+dotenv==0.9.9
+botocore==1.37.2
+pandas==2.2.3
+pytest-mock==3.14.0
