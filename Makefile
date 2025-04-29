@@ -66,7 +66,7 @@ run-security: security-test audit-test
 
 
 # Run formatting and tests
-run-checks: run-black run-docformatter unit-test check-coverage
+run-checks: run-black	run-docformatter	unit-test	check-coverage
 
 # Run all
-run-all: requirements run-security run-checks
+run-all: requirements	run-security	run-checks
