@@ -16,11 +16,11 @@ ACTIVATE_ENV := source ./venv/bin/activate
 
 #CREATE PYTHON INTERPRETER ENVIRONMENT
 ###################################################################################
-$(PYTHON_INTERPRETER) -m venv venv
+	$(PYTHON_INTERPRETER) -m venv venv
 
 #Activate venv
 define execute_in_env
-	$(ACTIVATE_ENV) && $1
+$(ACTIVATE_ENV) && $1
 endef
 
 #BUILD THE ENVIRONMENT REQUIREMENTS
@@ -66,7 +66,7 @@ run-security: security-test	audit-test
 
 
 # Run formatting and tests
-run-checks: run-black	run-docformatter	unit-test	check-coverage
+run-checks: run-black run-docformatter unit-test check-coverage
 
 # Run all
-run-all: requirements	run-security	run-checks
+run-all: requirements run-security run-checks
