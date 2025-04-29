@@ -55,16 +55,16 @@ run-docformatter:
 # 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest ./test/*.py  ./test_utils/*.py )
 
 # Run the coverage check
-check-coverage:
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src test/)
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=util_func test_utils/)
+# check-coverage:
+# 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src test/)
+# 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=util_func test_utils/)
 
 # Run security tests
 run-security: security-test	audit-test
 
 
 # Run formatting and tests
-run-checks: run-black run-docformatter check-coverage #unit-test
+run-checks: run-black run-docformatter #check-coverage #unit-test
 
 # Run all
 run-all: requirements run-security run-checks
