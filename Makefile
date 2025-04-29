@@ -16,6 +16,7 @@ ACTIVATE_ENV := source ./venv/bin/activate
 
 #CREATE PYTHON INTERPRETER ENVIRONMENT
 ###################################################################################
+create-environment:	
 	$(PYTHON_INTERPRETER) -m venv venv
 
 #Activate venv
