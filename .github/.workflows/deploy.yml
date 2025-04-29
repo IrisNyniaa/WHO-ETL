@@ -8,10 +8,7 @@ on:
     branches:
       - main
 
-run-tests:
-  runs-on: ubuntu-latest
-  steps:
-  jobs:
+jobs:
   run-tests:
     name: run-tests
     runs-on: ubuntu-latest
