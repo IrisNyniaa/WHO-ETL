@@ -23,5 +23,5 @@ jobs:
           python-version: '3.12.7'
   #run make all
       - name: Run checks
-        make: make run-all
+        run: make run-all
 
