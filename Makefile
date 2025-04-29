@@ -62,7 +62,7 @@ check-coverage:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=util_func test_utils/)
 
 # Run security tests
-run-security: security-test audit-test
+run-security: security-test	audit-test
 
 
 # Run formatting and tests
