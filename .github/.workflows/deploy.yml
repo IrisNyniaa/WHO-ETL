@@ -1,0 +1,30 @@
+name: WHO-ETL-CICD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+run-tests:
+  runs-on: ubuntu-latest
+  steps:
+  jobs:
+  run-tests:
+    name: run-tests
+    runs-on: ubuntu-latest
+  # clone repo
+    steps:
+      - name: Checkout and clone repo
+        uses: actions/checkout@v4
+  #install python
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.7'
+  #run make all
+      - name: Run checks
+        make: make run-all
+

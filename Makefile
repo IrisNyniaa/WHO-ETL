@@ -28,3 +28,45 @@ endef
 requirements: create-environment
 	$(call execute_in_env, $(PIP) install -r ./requirements.txt)
 	$(call execute_in_env, $(PIP) install -r ./requirements.txt -t dependencies/python)
+
+
+#RUN TESTS
+#########################################################################
+# Run the security test (bandit)
+security-test:
+	$(call execute_in_env, bandit -lll ./src/*.py ./test/*.py \
+	./util_func/*.py ./test_utils/*.py)
+
+# Run pip-audit test
+audit-test:
+	$(call execute_in_env, pip-audit)
+
+# Run the black code check
+run-black:
+	$(call execute_in_env, black --line-length 79 ./src/*.py ./test/*.py \
+	./util_func/*/*.py ./test_utils/*.py)
+
+# Run docformatter
+run-docformatter:
+	$(call execute_in_env, docformatter --in-place --wrap-summaries \
+	79 --wrap-descriptions 79 ./src/*.py ./test/*.py \
+	./util_func/*/*.py ./test_utils/*.py)
+
+# Run the unit tests
+unit-test:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest ./test/*.py  ./test_utils/*.py )
+
+# Run the coverage check
+check-coverage:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src test/)
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=util_func test_utils/)
+
+# Run security tests
+run-security: security-test audit-test
+
+
+# Run formatting and tests
+run-checks: run-black run-docformatter unit-test check-coverage
+
+# Run all
+run-all: requirements run-security run-checks
